@@ -1,0 +1,36 @@
+---
+title: "Internal_OpenDF: Profile"
+output:
+  github_document:
+    toc: true
+    toc_depth: 3
+---
+
+| Author: Xiaoyao Han, Claudia Saalbach, Knut Wenzig
+| Affiliation: DIW Berlin
+| Created: 2022-03-01
+| Version: v1.0.0
+| Last modified: 2022-05-17 Claudia Saalbach
+| Licence: This repository is issued under a CC by licence (https://creativecommons.org/licenses/by/4.0/)
+
+---
+
+A profile is a generic tool for specifying and validating XML files since it declares which XML schema the XML file refers to, which elements and attributes are used or not used and whether their use is mandatory or optional. In the Open Data Format project, a defined set of metadata will not only be used as XML files but also as CSV files, like for the Internal_OpenDF. To understand how the metadata elements and attributes are stored in different file formats, it is helpful to create a [profile view](profile_view.csv) for the Internal_OpenDF.
+
+Unlike an XML profile, not the XPaths are declared, but the columns or cells of a CSV table. The following notation is used for this purpose: `filename[row,column]`. For example, the declaration `dataset[,url]` refers to all rows of the column `url` from the CSV file named `dataset`.
+
+Further, the profile declares the attributes' and elements' terminology and their usage regarding if they are `mandatory`, `optional` or `mandatory if a element is present`. 
+
+
+```{r, echo=FALSE, include=TRUE}
+profile <- read.csv("profile_view.csv",
+                 header = TRUE,
+                 sep=","
+                 )
+
+knitr::kable(profile,
+             caption = 'Internal Open Data Format Profile'
+             )
+```
+
+

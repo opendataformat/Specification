@@ -1,0 +1,14 @@
+*.pdf
+*.aux
+*.log
+*.gz
+*.out
+*.toc
+*.snm
+*.vrb
+*.nav
+*.Rproj.user
+*.Rhistory
+*.RData
+*.Ruserdata
+

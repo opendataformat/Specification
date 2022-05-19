@@ -1,92 +1,217 @@
-# specification
+Open Data Format (OpenDF)
+================
 
+-   [About the Project](#about-the-project)
+    -   [Specification](#specification)
+        -   [External Open Data Format
+            (External\_OpenDF)](#external-open-data-format-external_opendf)
+        -   [Internal Open Data Format
+            (Internal\_OpenDF)](#internal-open-data-format-internal_opendf)
+    -   [Profile](#profile)
+-   [About the Reposititory](#about-the-reposititory)
 
+Author: Xiaoyao Han, Claudia Saalbach, Knut Wenzig  
+Affiliation: DIW Berlin  
+Created: 2022-03-01  
+Version: v1.0.0  
+Last modified: 2022-05-16 Claudia Saalbach  
+Licence: This repository is issued under a CC by licence
+(<https://creativecommons.org/licenses/by/4.0/>)
 
-## Getting started
+# About the Project
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Researchers in the social sciences use various software for statistical
+analysis of rectangular, structured data (e.g., Stata, R). Each software
+has a specific data format that is only partially compatible, if at all,
+with other software solutions. The non-interoperability of data formats
+is an obstacle to replication studies and data-reuse. It undermines the
+FAIR principles and is not in line with the idea of open science. To
+meet the needs of data users, data producers offer a variety of data
+formats by doing a lot of redundant work, which is error-prone and leads
+to increasing costs. Furthermore, there is not only a demand for
+different data formats but also for material that describes the data;
+this includes, for example, study descriptions, method reports,
+codebooks, or questionnaires. As of now, it is common practice for
+scientists to have to leave their statistical software environment to
+search for supplementary material while performing the analysis of their
+data, as this material is often accessible through external data
+portals. This practice is inconvenient and prone to errors.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+The open, metadata-enriched, non-proprietary data dissemination format
+(OpenDF) is a project of KonsortSWD, the NFDI consortium for the social,
+behavioural, educational and economic sciences. The project provides a
+non-proprietary Open Data Format enriched with multi-level metadata that
+is smoothly usable with popular statistical software. The project
+includes three main work aspects:
 
-## Add your files
+1.  The [Specification](#specification) of the OpenDF and the
+    documentation of the specifications’ development is the core work
+    that runs through the entire project. We start with a minimal but
+    scalable specification and aim to evolve it into a specification
+    that is suitable for a wide range of use cases.
+2.  For the OpenDF to be usable with existing statistical software, the
+    project develops import filters for a selection of software programs
+    (Stata, R) to use the OpenDF within the software.
+3.  Vice Versa, the project develops export filters for statistical
+    software packages (e.g., Stata, R) that allow converting their
+    native data format to the OpenDF.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Specification
 
-```
-cd existing_repo
-git remote add origin https://git.soep.de/opendata/specification.git
-git branch -M main
-git push -uf origin main
-```
+As a cornerstone and first milestone, the repository initially contains
+the specification of the Open Data Format (OpenDF). The specification
+includes the External Open Data Format (External\_OpenDF) and the
+Internal Open Data Format (Internal\_OpenDF).
 
-## Integrate with your tools
+![Figure 1: Project Structure](img/img01.svg)
 
-- [ ] [Set up project integrations](https://git.soep.de/opendata/specification/-/settings/integrations)
+Figure 1 visualizes the entire project structure. The Internal\_OpenDF
+builds the project’s center point and provides the basis for the import
+filter development regarding the statistical software packages mentioned
+on the right side of the figure. The project attempts to provide
+interoperability with existing widely used metadata standards,
+particularly from the DDI family, visualized on the left.
 
-## Collaborate with your team
+### External Open Data Format (External\_OpenDF)
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+The External\_OpenDF is dedicated to providing a non-proprietary data
+format for data exchange and dissemination. In other words, it is the
+core data format that data producers can provide while data users can
+import the data format into several statistical software.
 
-## Test and Deploy
+The External\_OpenDF consists of data and metadata organized in two
+separate files (see Figure 2). The data is stored in CSV format and the
+metadata is in XML. For data exchange, both files are packed into a ZIP
+file. The ZIP file corresponds to the dataset to be used for various
+statistics programs through import filters. Vice Versa, statistical
+software is to be capable of exporting the native format to the
+External\_OpenDF.
 
-Use the built-in continuous integration in GitLab.
+The DDI-Codebook 2.5 metadata schema is the basis for the specification
+of the metadata component in the External\_OpenDF. Besides the
+DDI-Codebook 2.5 schema, the External\_OpenDF is to be extendable with
+further existing metadata schemas.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+![Figure 2: Files of a dataset specified in the External Open Data
+Format](img/img02.svg)
 
-***
+### Internal Open Data Format (Internal\_OpenDF)
 
-# Editing this README
+Next to the External\_OpenDF, the project specifies the Internal\_OpenDF
+that is central for technical implementation as it reduces the
+complexity of existing metadata standards to their core features.
+Furthermore, the Internal\_OpenDF serves the development of features
+that allow using enriched metadata within commonly statistical software
+programs (e.g., multilingual labels, descriptions, and URLs). The
+Internal\_OpenDF serves as an abstraction for the External\_OpenDF.
+Therefore the External\_OpenDF can be easily adapted.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+The metadata component of the Internal\_OpenDF is organized in three CSV
+files instead of one XML file, which has the advantage that most
+statistical programs can handle CSV files very well. The development of
+import filters uses these CSV files for the conversion into the software
+programs’ native data format. For someone who wants to develop import
+filters for software other than those covered in this project, the
+Internal\_OpenDF could be useful since it functions as a bridge between
+software and existing metadata standards such as DDI-Codebook 2.5.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+![Figure 3: Files of a dataset specified in the Internal Open Data
+Format](img/img03.svg)
 
-## Name
-Choose a self-explaining name for your project.
+## Profile
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+For the specification of a data format’s metadata component, a profile
+is a useful tool. Typically, there are numerous possibilities and
+variations on how metadata can be stored, even if it is the same file
+format and the same metadata schema. This is a problem for the
+development of technical solutions that are intended to use this
+metadata. Especially when it comes to integrating different software,
+different file formats, and different metadata schemas. Since a metadata
+profile gives an overview of the semantic definition of the used
+elements, attributes, and their constraints, a profile is an essential
+tool for documenting the basis of application programming and
+establishing interoperability between different technical environments.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+For the External Open Data Format, the specification of the metadata
+component is oriented towards a standardized and well-established
+structure since it is based on the DDI-Codebook 2.5 schema. According to
+the DDI Alliance, DDI is “a very flexible and complex standard that may
+be used by various projects or organizations in ‘customized’ ways that
+best answer specific needs” (Source:
+<https://ddialliance.org/learn/resources/ddi-profiles>). The profile of
+the DDI-Codebook 2.5 schema, developed in this project, describes which
+DDI elements are ‘Used’ or ‘Not Used’. Table 1 provides a preview of the
+DDI-Codebook 2.5 profile specified for the External Open Data Format.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+|     | element.label  | element.description                                                                                                                                                                                                                                                                                                                       | external\_xml                             | xml\_classification                    |
+|:----|:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|:---------------------------------------|
+| 20  | variable name  | The attribute “name” usually contains the so-called “short label” for the variable, limited to eight characters in many statistical analysis systems such as SAS or SPSS.                                                                                                                                                                 | //codeBook/dataDscr/var\[@name\]          | mandatory if ‚var‘ element is present  |
+| 21  | variable label | A short description of the variable. In the variable label, the length of this phrase may depend on the statistical analysis system used (e.g., some versions of SAS permit 40-character labels, while some versions of SPSS permit 120 characters), although the DDI itself imposes no restrictions on the number of characters allowed. | //codeBook/dataDscr/var/labl              | optional                               |
+| 22  | language tag   | Attribute to specify the language of the <variable label>. &lt;Use ISO-639-1-Code for language subtags, e.g. en for English.&gt;                                                                                                                                                                                                          | //codeBook/dataDscr/var/labl\[@xml:lang\] | mandatory if ‚labl‘ element is present |
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Table 1: Preview of the External Open Data Format metadata profile based
+on the DDI-Codebook 2.5 schema
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Besides the documentary function, a profile is a handy tool for
+validating a metadata file. The Consortium of European Social Science
+Data Archives (CESSDA) provides an online application for validating
+metadata XML files ([CESSDA Metadata
+Validator](https://cmv.cessda.eu/#!validation)). The validator checks if
+the structure, semantics, or the mandatory or optional usage of tags
+within the metadata XML file corresponds to the declarations of the
+profile. Since we provide a [profile XML
+file](external/profile/profile.xml) in addition to the [profile
+view]((external/profile/profile_view.csv)), you can use the CESSDA
+Metadata Validator to verify if your metadata is already interoperable
+with the metadata profile specified for the External\_OpenDF. To test
+the validator tool from CESSDA you can download the metadata file from
+this repository [metadata.xml](external/example/metadata.xml)) and
+validate against the External\_OpenDF profil
+([profile.xml](external/profile/profile.xml)).
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+# About the Reposititory
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+The repository documents the development of all milestones in the OpenDF
+project over the entire project duration. As a cornerstone and first
+milestone, the repository initially contains the specification of the
+Internal Open Data Format and the External Open Data Format.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+The structure of this repository is organized as follows:
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+-   README
+-   internal
+    -   README
+    -   example
+        -   README
+        -   categories.csv
+        -   data.csv
+        -   dataset.csv
+        -   variables.csv
+    -   profile
+        -   README
+        -   profile\_view.csv
+    -   img
+-   external
+    -   README
+    -   example
+        -   README
+        -   data.csv
+        -   metadata.xml
+    -   profile
+        -   README
+        -   profile.xml
+        -   profile\_view.csv
+-   img
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+The repository organizes the Internal and the External Open Data Format
+in the folders [internal](internal) and [external](external). Each
+folder holds a README that guides through the essential information of
+the material. Furthermore, each folder provides a minimal data
+[example](external/example) of a typical survey dataset and a metadata
+[profile](external/profile).  
+The purpose of this repository is to elaborately demonstrate and
+illustrate the results of our work at current stage, as well as to
+facilitate further discussions among potential stakeholders and
+communities. Based on this result, we will carry out further work in
+terms of enriching the metadata schema and developing import filters for
+popular statistical software.
