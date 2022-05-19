@@ -179,29 +179,29 @@ Internal Open Data Format and the External Open Data Format.
 The structure of this repository is organized as follows:
 
 -   README
--   internal
-    -   README
-    -   example
-        -   README
-        -   categories.csv
-        -   data.csv
-        -   dataset.csv
-        -   variables.csv
-    -   profile
-        -   README
-        -   profile\_view.csv
-    -   img
--   external
-    -   README
-    -   example
-        -   README
-        -   data.csv
-        -   metadata.xml
-    -   profile
-        -   README
-        -   profile.xml
-        -   profile\_view.csv
--   img
+-   [internal](internal/)
+    -   [README](internal/README.md)
+    -   [example](internal/example/)
+        -   [README](internal/example/README.md)
+        -   [categories.csv](internal/example/categories.csv)
+        -   [data.csv](internal/example/data.csv)
+        -   [dataset.csv](internal/example/dataset.csv)
+        -   [variables.csv](internal/example/variables.csv)
+    -   [profile](internal/profile/)
+        -   [README](internal/profile/README.md)
+        -   [profile\_view.csv](internal/profile/profile_view.csv)
+    -   [img](internal/img/)
+-   [external](external/)
+    -   [README](external/README.md)
+    -   [example](external/example/)
+        -   [README](external/example/README.md)
+        -   [data.csv](external/example/data.csv)
+        -   [metadata.xml](external/example/metadata.xml)
+    -   [profile](external/profile/)
+        -   [README](external/profile/README.md)
+        -   [profile.xml](external/profile/profile.xml)
+        -   [profile\_view.csv](external/profile/profile_view.csv)
+-   [img](img/)
 
 The repository organizes the Internal and the External Open Data Format
 in the folders [internal](internal) and [external](external). Each
