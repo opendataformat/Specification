@@ -17,7 +17,7 @@ label data "Daten vom Personenfragebogen 2010"
 * data description
 #delim ;
 note: The data were collected as part of the SOEP-Core study using the questionnaire 
-Living in Germany - Survey 2010 on the social situation - Personal questionnaire for all'. 
+'Living in Germany - Survey 2010 on the social situation - Personal questionnaire for all'. 
 This questionnaire is addressed to the individual persons in the household. 
 A view of the survey instrument can be found here: 
 https://www.diw.de/documents/dokumentenarchiv/17/diw_01.c.369781.de/soepfrabo_personen_2010.pdf;
@@ -25,11 +25,13 @@ https://www.diw.de/documents/dokumentenarchiv/17/diw_01.c.369781.de/soepfrabo_pe
 
 #delim ;
 note: Die Daten wurden im Rahmen der Studie SOEP-Core mittels des Fragebogens 
-"Leben in Deutschland – Befragung 2010 zur sozialen Lage - Personenfragebogen 
-für alle" erhoben. Dieser Fragebogen richtet sich an die einzelnen Personen im 
+'Leben in Deutschland – Befragung 2010 zur sozialen Lage - Personenfragebogen 
+für alle' erhoben. Dieser Fragebogen richtet sich an die einzelnen Personen im 
 Haushalt. Eine Ansicht des Erhebungsinstrumentes finden Sie hier: 
 https://www.diw.de/documents/dokumentenarchiv/17/diw_01.c.369781.de/soepfrabo_personen_2010.pdf;
 #delim cr
+
+note: https://paneldata.org/soep-core/data/bap
 
 * variable labels
 label language en
