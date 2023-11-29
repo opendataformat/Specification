@@ -155,4 +155,6 @@ label values bap9003 bap9003_en
 label copy bap9201_en bap96_en
 label values bap96 bap96_en
 
+format bap96 %9.0g
+
 save "H:\Open Data Format\repositories\specification\internal\example\example.dta", replace
