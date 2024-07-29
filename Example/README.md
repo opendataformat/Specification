@@ -104,7 +104,7 @@ The `<codebook>` tag holds general information about the DDI-Codebook
 Code 1: XML code for declaring the metadata schema
 
 ### Study
-The `<stdyDscr>`tag includes information about the study where the data was collected.
+The `<stdyDscr>` tag includes information about the study where the data was collected.
 
 ```{xml}
 <stdyDscr>
@@ -118,7 +118,7 @@ The `<stdyDscr>`tag includes information about the study where the data was coll
 
 ### Dataset
 
-The `<fileDscr>`tag includes information about the dataset by using
+The `<fileDscr>` tag includes information about the dataset by using
 several sub-tags: The `<fileName>` tag encloses the dataset name, in
 this case, `bap`. The `<titl>` tag holds the dataset label. In this
 example, two language versions of the dataset label exist. Therefore,
