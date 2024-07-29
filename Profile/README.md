@@ -12,8 +12,8 @@ Open Data Format: Profile
 Author: Xiaoyao Han, Claudia Saalbach, Knut Wenzig, Tom Hartl  
 Affiliation: DIW Berlin  
 Created: 2022-03-01  
-Version: v1.0.0  
-Last modified: 2022-04-29 Claudia Saalbach  
+Version: v1.1.0  
+Last modified: 2024-07-29 Tom Hartl, Xiaoyao Han 
 Licence: This repository is issued under a CC by licence
 (<https://creativecommons.org/licenses/by/4.0/>)
 
