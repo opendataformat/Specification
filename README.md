@@ -5,16 +5,15 @@ Open Data Format (OpenDF)
     -   [Specification](#specification)
         -   [External Open Data Format
             (External\_OpenDF)](#external-open-data-format-external_opendf)
-        -   [Internal Open Data Format
-            (Internal\_OpenDF)](#internal-open-data-format-internal_opendf)
     -   [Profile](#profile)
+    -   [Profile Example](#profile-example)
 -   [About the Reposititory](#about-the-reposititory)
 
-Author: Xiaoyao Han, Claudia Saalbach, Knut Wenzig  
+Author: Xiaoyao Han, Tom Hartl, Claudia Saalbach, Knut Wenzig  
 Affiliation: DIW Berlin  
 Created: 2022-03-01  
 Version: v1.0.0  
-Last modified: 2022-05-16 Claudia Saalbach  
+Last modified: 2024-07-29 Claudia Saalbach  
 Licence: This repository is issued under a CC by licence
 (<https://creativecommons.org/licenses/by/4.0/>)
 
@@ -58,20 +57,6 @@ includes three main work aspects:
 
 ## Specification
 
-As a cornerstone and first milestone, the repository initially contains
-the specification of the Open Data Format (OpenDF). The specification
-includes the External Open Data Format (External\_OpenDF) and the
-Internal Open Data Format (Internal\_OpenDF).
-
-![Figure 1: Project Structure](img/img01.svg)
-
-Figure 1 visualizes the entire project structure. The Internal\_OpenDF
-builds the project’s center point and provides the basis for the import
-filter development regarding the statistical software packages mentioned
-on the right side of the figure. The project attempts to provide
-interoperability with existing widely used metadata standards,
-particularly from the DDI family, visualized on the left.
-
 ### External Open Data Format (External\_OpenDF)
 
 The External\_OpenDF is dedicated to providing a non-proprietary data
@@ -94,29 +79,6 @@ further existing metadata schemas.
 
 ![Figure 2: Files of a dataset specified in the External Open Data
 Format](img/img02.svg)
-
-### Internal Open Data Format (Internal\_OpenDF)
-
-Next to the External\_OpenDF, the project specifies the Internal\_OpenDF
-that is central for technical implementation as it reduces the
-complexity of existing metadata standards to their core features.
-Furthermore, the Internal\_OpenDF serves the development of features
-that allow using enriched metadata within commonly statistical software
-programs (e.g., multilingual labels, descriptions, and URLs). The
-Internal\_OpenDF serves as an abstraction for the External\_OpenDF.
-Therefore the External\_OpenDF can be easily adapted.
-
-The metadata component of the Internal\_OpenDF is organized in three CSV
-files instead of one XML file, which has the advantage that most
-statistical programs can handle CSV files very well. The development of
-import filters uses these CSV files for the conversion into the software
-programs’ native data format. For someone who wants to develop import
-filters for software other than those covered in this project, the
-Internal\_OpenDF could be useful since it functions as a bridge between
-software and existing metadata standards such as DDI-Codebook 2.5.
-
-![Figure 3: Files of a dataset specified in the Internal Open Data
-Format](img/img03.svg)
 
 ## Profile
 
@@ -169,6 +131,9 @@ this repository [metadata.xml](external/example/metadata.xml)) and
 validate against the External\_OpenDF profil
 ([profile.xml](external/profile/profile.xml)).
 
+### Profile Example
+
+
 # About the Reposititory
 
 The repository documents the development of all milestones in the OpenDF
@@ -179,18 +144,6 @@ Internal Open Data Format and the External Open Data Format.
 The structure of this repository is organized as follows:
 
 -   README
--   [internal](internal/)
-    -   [README](internal/README.md)
-    -   [example](internal/example/)
-        -   [README](internal/example/README.md)
-        -   [categories.csv](internal/example/categories.csv)
-        -   [data.csv](internal/example/data.csv)
-        -   [dataset.csv](internal/example/dataset.csv)
-        -   [variables.csv](internal/example/variables.csv)
-    -   [profile](internal/profile/)
-        -   [README](internal/profile/README.md)
-        -   [profile\_view.csv](internal/profile/profile_view.csv)
-    -   [img](internal/img/)
 -   [external](external/)
     -   [README](external/README.md)
     -   [example](external/example/)
@@ -200,7 +153,6 @@ The structure of this repository is organized as follows:
     -   [profile](external/profile/)
         -   [README](external/profile/README.md)
         -   [profile.xml](external/profile/profile.xml)
-        -   [profile\_view.csv](external/profile/profile_view.csv)
 -   [img](img/)
 
 The repository organizes the Internal and the External Open Data Format
