@@ -1,4 +1,4 @@
-External\_OpenDF: Profile
+Open Data Format: Profile
 ================
 
 -   [Introduction](#introduction)
@@ -21,23 +21,23 @@ Licence: This repository is issued under a CC by licence
 
 # Introduction
 
-The External Open Data Format (External\_OpenDF) profile gives an
-overview of the metadata elements’ and attributes’ semantic definition
-and constraints. The documentation of the metadata specification is the
-basis for the internal programming work of the project. It is also
-necessary concerning interoperability. For example, external developers
+The Open Data Format (ODF) profile gives an overview of the metadata 
+elements’ and attributes’ semantic definition and constraints. The 
+documentation of the metadata specification is the basis for the 
+internal programming work of the project. It is also necessary 
+concerning interoperability. For example, external developers
 may want to adapt the metadata specification developed here for their
 projects. Besides the documentary function, a profile is a handy tool
 for validating a metadata file. Data producers can check upfront whether
 their data product will work with the technical solutions developed in
 this project. For example, if you create an XML metadata file in the
-External-OpenDF yourself, you can validate it. For this purpose you can
+ODF-specification yourself, you can validate it. For this purpose you can
 use the [XML profile](profile.xml) from this repository and upload it,
 together with your XML metadata file (e. g., from the
 [example](../example/metadata.xml) folder) to the website of the [CESSDA
 Metadata Validator](https://cmv.cessda.eu/#!validation).
 
-The metadata component of the External\_OpenDF follows the DDI-Codebook
+The metadata component of the Open Data Format follows the DDI-Codebook
 2.5 schema. As mentioned on the [DDI Alliance
 website](https://ddialliance.org/learn/resources/ddi-profiles), “DDI is
 a very flexible and complex standard that may be used by various
@@ -54,7 +54,7 @@ human-readable documentation can be added” (Source:
 <https://ddialliance.org/learn/resources/ddi-profiles>).
 
 The template for the development and documentation of the
-External\_OpenDF profile is the DDI-Codebook
+Open Data Format profile is the DDI-Codebook
 2.5 schema. The description text is mostly taken from the “Linked Field-Level
 documentation” of the DDI-Codebook 2.5 schema
 (<https://ddialliance.org/Specification/DDI-Codebook/2.5/>). Some text
@@ -63,7 +63,7 @@ marking them with the characters &lt;*modyfied text*&gt;.
 
 # Explanation
 
-The External\_OpenDF profile holds a set of constrains that use Xpath
+The ODF profile holds a set of constrains that use Xpath
 syntax to define the usage of elements and attributes. The Xpath syntax
 uses a path notation, like those used in URLs, for addressing parts of
 an XML document. There are three types of constrains for the usage of
@@ -75,7 +75,7 @@ constraints within the XML profile file, which is necessary for
 validating the actual XML file that stores the dataset’s metadata
 component. For a complete human-readable view of the profile, skip to
 the section [Overview](#overview) or take a look at the [XML profile CSV
-file](profile_view.csv). The XML file of the External Open\_DF metadata
+file](profile_view.csv). The XML file of the ODF metadata
 profile, you can find under [profile.xml](profile.xml) in this
 directory.
 
@@ -84,15 +84,14 @@ directory.
 The function of the `var` node is to hold multiple pieces of information
 describing a variable at different hierarchical levels. Since a dataset
 without variables is not a dataset by definition, it makes sense that
-the `var` node is a mandatory element of the External Open Data Format
+the `var` node is a mandatory element of the Open Data Format
 metadata specification.
 
 |     | element.label | element.description                                                                            | external\_xml           | xml\_classification |
 |:----|:--------------|:-----------------------------------------------------------------------------------------------|:------------------------|:--------------------|
 | 19  | variable      | This element describes all of the features of a single variable in a social science data file. | //codeBook/dataDscr/var | mandatory           |
 
-Table 1: Example for an mandatory constraint within the External\_OpenDF
-Profile.
+Table 1: Example for an mandatory constraint within the ODF Profile.
 
 ``` xml
     <pr:Used xpath="/codeBook/dataDscr/var" isRequired="true">
