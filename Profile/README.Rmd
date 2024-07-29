@@ -1,0 +1,136 @@
+---
+title: "External_OpenDF: Profile"
+output:
+  github_document:
+    toc: true
+    toc_depth: 2
+    
+---
+
+
+| Author: Xiaoyao Han, Claudia Saalbach, Knut Wenzig
+| Affiliation: DIW Berlin
+| Created: 2022-03-01
+| Version: v1.0.0
+| Last modified: 2022-04-29 Claudia Saalbach
+| Licence: This repository is issued under a CC by licence (https://creativecommons.org/licenses/by/4.0/)
+
+---
+
+# Introduction
+
+The External Open Data Format (External_OpenDF) profile gives an overview of the metadata elements' and attributes' semantic definition and constraints. The documentation of the metadata specification is the basis for the internal programming work of the project. It is also necessary concerning interoperability. For example, external developers may want to adapt the metadata specification developed here for their projects. Besides the documentary function, a profile is a handy tool for validating a metadata file. Data producers can check upfront whether their data product will work with the technical solutions developed in this project. For example, if you create an XML metadata file in the External-OpenDF yourself, you can validate it. For this purpose you can use the [XML profile](profile.xml) from this repository and upload it, together with your XML metadata file (e. g., from the
+[example](../example/metadata.xml) folder) to the website of the [CESSDA Metadata Validator](https://cmv.cessda.eu/#!validation). 
+
+The metadata component of the External_OpenDF follows the DDI-Codebook 2.5 schema. As mentioned on the [DDI Alliance website](https://ddialliance.org/learn/resources/ddi-profiles), "DDI is a very flexible and complex standard that may be used by various projects or organizations in 'customized' ways that best answer specific needs. DDI profiles allow different agents or agencies to specify exactly how they use the DDI XML format, and thus help achieve seamless transfer and interoperability of DDI instances. A DDI profile describes the subset of valid DDI objects used by an agency for a specified purpose. This is documented in a DDI-XML format, which allows a set of declarations to be made, identifying specific fields in the DDI which are 'Used' or 'Not Used'. Various other qualifications can be made to restrict or default permitted values for specific elements, and human-readable documentation can be added" (Source: https://ddialliance.org/learn/resources/ddi-profiles).
+
+The template for the development and documentation of the External_OpenDF profile is the CESSDA DATA CATALOGUE (CDC) DDI2.5 PROFILE (https://cmv.cessda.eu/profiles/cdc/ddi-2.5/1.0.4/profile.xml). The description text is mostly taken from the "Linked Field-Level documentation" of the DDI-Codebook 2.5 schema (https://ddialliance.org/Specification/DDI-Codebook/2.5/). Some text passages we have adapted or supplemented and made the changes notable by marking them with the characters <*modyfied text*>.
+
+# Explanation
+
+The External_OpenDF profile holds a set of constrains that use Xpath syntax to define the usage of elements and attributes. The Xpath syntax uses a path notation, like those used in URLs, for addressing parts of an XML document. There are three types of constrains for the usage of the nodes: `mandatory`, `optional`, and `mandatory if parent element is present`.
+
+Using some examples, we explain the implementation of the three constraints within the XML profile file, which is necessary for validating the actual XML file that stores the dataset's metadata component. For a complete human-readable view of the profile, skip to the section [Overview](#overview) or take a look at the [XML profile CSV file](profile_view.csv). The XML file of the External Open_DF metadata profile, you can find under [profile.xml](profile.xml) in this directory.
+
+## Mandatory Constraint
+
+The function of the `var` node is to hold multiple pieces of information describing a variable at different hierarchical levels. Since a dataset without variables is not a dataset by definition, it makes sense that the `var` node is a mandatory element of the External Open Data Format metadata specification.
+
+```{r, echo=FALSE}
+knitr::kable(read.csv("profile_view.csv",
+                 header = TRUE,
+                 sep=",",
+                 )[19,]
+             )
+```
+Table 1: Example for an mandatory constraint within the External_OpenDF Profile.
+
+```{xml}
+	<pr:Used xpath="/codeBook/dataDscr/var" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>								
+			<r:Content>Usage: This element describes all of the features of a single variable in a 
+			social science data file. 
+			</r:Content>			
+		</r:Description>
+	</pr:Used>	
+```
+
+Code 1: Respective XML Code for the example presented in Table 1.
+
+<!-- -------------------- -->
+
+## Optional Constraint
+
+The metadata specification of the External_OpenDF allows providing a lengthier description of a variable that goes beyond the variable label. Since an extended variable description may not always be necessary, the profile declares the Xpath `//codeBook/dataDscr/var/txt` optional. 
+
+```{r, echo=FALSE}
+knitr::kable(read.csv("profile_view.csv",
+                 header = TRUE,
+                 sep=",",
+                 )[23,]
+             )
+```
+Table 2: Example for an optional constraint within the External_OpenDF Profile.
+
+
+```{xml}
+	<pr:Used xpath="/codeBook/dataDscr/var/txt" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Lengthier description of the parent variable.</r:Content>			
+		</r:Description>
+	</pr:Used>	
+```
+Code 2: Respective XML Code for the example presented in Table 2. 
+
+<!-- -------------------- -->
+
+## Mandatory if parent element is present Constraint
+
+The metadata specification of the External Open Data Format supports multi-lingual labels and descriptions for several dataset elements like variables or values, which makes it necessary to declare the language of the text element using the attribute `@xml:lang`. For example, if a variable description exists (even if it is optional), the declaration of the language is mandatory.
+
+```{r, echo=FALSE}
+knitr::kable(read.csv("profile_view.csv",
+                 header = TRUE,
+                 sep=",",
+                 )[24,]
+             )
+```
+Table 3: Example for an "mandotory if parent element is present" constraint within the External_OpenDF Profile.
+
+
+```{xml}
+	<pr:Used xpath="/codeBook/dataDscr/var/txt/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'txt' element is present.</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>
+			<r:Content>Usage: Attribute to specify the language of the variable description>. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>			
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>	
+	</pr:Used>	
+
+```
+Code 3: Respective XML Code for the example presented in Table 3. 
+
+<!-- -------------------- -->
+
+# Complete Profile View 
+
+
+```{r, echo=FALSE}
+knitr::kable(read.csv("profile_view.csv",
+                 header = TRUE,
+                 sep=","
+                 )
+             )
+```
+
+
+
