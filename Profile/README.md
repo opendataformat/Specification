@@ -9,7 +9,7 @@ Open Data Format: Profile
         Constraint](#mandatory-if-parent-element-is-present-constraint)
 -   [Complete Profile View](#complete-profile-view)
 
-Author: Xiaoyao Han, Claudia Saalbach, Knut Wenzig  
+Author: Xiaoyao Han, Claudia Saalbach, Knut Wenzig, Tom Hartl  
 Affiliation: DIW Berlin  
 Created: 2022-03-01  
 Version: v1.0.0  
