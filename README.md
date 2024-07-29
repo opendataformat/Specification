@@ -78,7 +78,7 @@ DDI-Codebook 2.5 schema, the External\_OpenDF is to be extendable with
 further existing metadata schemas.
 
 ![Figure 2: Files of a dataset specified in the External Open Data
-Format](img/img02.svg)
+Format](img/img02.png)
 
 ## Profile
 
