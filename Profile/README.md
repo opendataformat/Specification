@@ -116,7 +116,7 @@ lengthier description of a variable that goes beyond the variable label.
 Since an extended variable description may not always be necessary, the
 profile declares the Xpath `//codeBook/dataDscr/var/txt` optional.
 
-|     | element.label        | element.description                    | external\_xml               | xml\_classification |
+|     | element.label        | element.description                    | xml file                    | xml\_classification |
 |:----|:---------------------|:---------------------------------------|:----------------------------|:--------------------|
 | 23  | variable description | Lengthier description of the variable. | //codeBook/dataDscr/var/txt | optional            |
 
@@ -146,7 +146,7 @@ the text element using the attribute `@xml:lang`. For example, if a
 variable description exists (even if it is optional), the declaration of
 the language is mandatory.
 
-|     | element.label | element.description                                                                                                                    | external\_xml                            | xml\_classification                   |
+|     | element.label | element.description                                                                                                                    | external\_xml                            | xml file                        |
 |:----|:--------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------|:--------------------------------------|
 | 24  | language tag  | Attribute to specify the language of the <variable description>. &lt;Use ISO-639-1-Code for language subtags, e.g. en for English.&gt; | //codeBook/dataDscr/var/txt\[@xml:lang\] | mandatory if ‘txt’ element is present |
 
@@ -174,7 +174,7 @@ Code 3: Respective XML Code for the example presented in Table 3.
 
 # Complete Profile View
 
-| element.label        | element.description                                                                                                                                                                                                                                                                                                                       | external\_xml                                                       | xml\_classification                         |
+| element.label        | element.description                                                                                                                                                                                                                                                                                                                       | xml file                                                            | xml\_classification                         |
 |:---------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------|
 |                      |                                                                                                                                                                                                                                                                                                                                           | /codeBook                                                           | mandatory                                   |
 |                      | The top-level element, codeBook, also includes a version attribute to specify the version number of the DDI specification.                                                                                                                                                                                                                | //codeBook\[@version\]                                              | mandatory                                   |
