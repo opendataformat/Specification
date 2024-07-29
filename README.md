@@ -13,7 +13,7 @@ Author: Xiaoyao Han, Tom Hartl, Claudia Saalbach, Knut Wenzig
 Affiliation: DIW Berlin  
 Created: 2022-03-01  
 Version: v1.0.0  
-Last modified: 2024-07-29 Claudia Saalbach  
+Last modified: 2024-07-29  
 Licence: This repository is issued under a CC by licence
 (<https://creativecommons.org/licenses/by/4.0/>)
 
@@ -131,39 +131,4 @@ this repository [metadata.xml](external/example/metadata.xml)) and
 validate against the External\_OpenDF profil
 ([profile.xml](external/profile/profile.xml)).
 
-### Profile Example
-
-
-# About the Reposititory
-
-The repository documents the development of all milestones in the OpenDF
-project over the entire project duration. As a cornerstone and first
-milestone, the repository initially contains the specification of the
-Internal Open Data Format and the External Open Data Format.
-
-The structure of this repository is organized as follows:
-
--   README
--   [external](external/)
-    -   [README](external/README.md)
-    -   [example](external/example/)
-        -   [README](external/example/README.md)
-        -   [data.csv](external/example/data.csv)
-        -   [metadata.xml](external/example/metadata.xml)
-    -   [profile](external/profile/)
-        -   [README](external/profile/README.md)
-        -   [profile.xml](external/profile/profile.xml)
--   [img](img/)
-
-The repository organizes the Internal and the External Open Data Format
-in the folders [internal](internal) and [external](external). Each
-folder holds a README that guides through the essential information of
-the material. Furthermore, each folder provides a minimal data
-[example](external/example) of a typical survey dataset and a metadata
-[profile](external/profile).  
-The purpose of this repository is to elaborately demonstrate and
-illustrate the results of our work at current stage, as well as to
-facilitate further discussions among potential stakeholders and
-communities. Based on this result, we will carry out further work in
-terms of enriching the metadata schema and developing import filters for
-popular statistical software.
+## Profile Example
