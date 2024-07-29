@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../xslt/1.0/stylesheet.xsl"?>
+
+<!--
+Author: Xiaoyao Han, Tom Hartl, Claudia Saalbach - DIW Berlin
+Created: 2022-03-11
+Version: v1.0.0
+Last modified 2024-07-29 Xiaoyao Han
+Licence: This document is issued under a CC BY licence (https://creativecommons.org/licenses/by/4.0/)
+-->
+
+<pr:DDIProfile xmlns:r="ddi:reusable:3_2"
+			   xmlns:pr="ddi:ddiprofile:3_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="ddi:ddiprofile:3_2 https://ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/ddiprofile.xsd"
+			   versionDate="2021-03-01">
+	<r:Agency>DIW Berlin</r:Agency>
+	<r:ID>Open_Data_Format_DDI25_PROFILE</r:ID>
+	<r:Version>1.0.1</r:Version>
+	<r:VersionResponsibility>Xiaoyao Han, Claudia Saalbach - DIW Berlin</r:VersionResponsibility>
+	<pr:DDIProfileName>
+		<r:String>Open_Data_Format (OpenDF) DDI2.5 PROFILE</r:String>
+	</pr:DDIProfileName>
+	<pr:XPathVersion>1.0</pr:XPathVersion>
+	<pr:DDINamespace>2.5</pr:DDINamespace>
+	<pr:XMLPrefixMap>
+		<pr:XMLPrefix/>
+		<pr:XMLNamespace>ddi:codebook:2_5</pr:XMLNamespace>
+	</pr:XMLPrefixMap>
+	<pr:XMLPrefixMap>
+		<pr:XMLPrefix>xsi</pr:XMLPrefix>
+		<pr:XMLNamespace>http://www.w3.org/2001/XMLSchema-instance</pr:XMLNamespace>
+	</pr:XMLPrefixMap>
+
+	<!--****************************************************************************************-->
+	<!--ROOT ELEMENT-->
+	<!--****************************************************************************************-->
+
+	<pr:Used xpath="/codeBook/@xsi:schemaLocation"
+			 defaultValue="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd"
+			 fixedValue="true" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Attribute</r:Content>
+			<r:Content>Usage: System-required information - always "ddi:codebook:2_5
+				codebook.xsd"
+			</r:Content>
+		</r:Description>
+	</pr:Used>
+	
+	<!--****************************************************************************************-->
+	<!--STUDY DESCRIPTIONS-->
+	<!--****************************************************************************************-->
+	
+	<pr:Used xpath="/codeBook/stdyDscr" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Information about the data collection, study, or compilation.</r:Content>
+		</r:Description>
+	</pr:Used>
+	<pr:Used xpath="/codeBook/stdyDscr/citation" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Bibliographic information for the work.</r:Content>
+		</r:Description>
+	</pr:Used>
+	<pr:Used xpath="/codeBook/stdyDscr/citation/titlStmt" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Title statement for the work.</r:Content>
+		</r:Description>
+	</pr:Used>
+	<pr:Used xpath="/codeBook/stdyDscr/citation/titlStmt/titl" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Information title statement for the work file..</r:Content>
+		</r:Description>
+	</pr:Used>
+	
+	<pr:Used xpath="/codeBook/studyDscr/citation/titlStmt/titl/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional </r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>					
+			<r:Content>Usage: Attribute to specify the language of the dataset label. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>
+		</r:Description>
+	</pr:Used>
+	
+    <pr:Used xpath="/codeBook/stdyDscr/citation/titlStmt/parTitl" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Title translated into another language.</r:Content>
+		</r:Description>
+	</pr:Used>
+	
+	<pr:Used xpath="/codeBook/studyDscr/fileTxt/fileCitation/titlStmt/parTitl/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional </r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>					
+			<r:Content>Usage: Attribute to specify the language of the study title. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>
+		</r:Description>
+	</pr:Used>
+	
+	<!--****************************************************************************************-->
+	<!--FILE DESCRIPTIONS-->
+	<!--****************************************************************************************-->
+	
+	<pr:Used xpath="/codeBook/fileDscr" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Information about the data file(s) that comprises a collection.</r:Content>
+		</r:Description>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Provides descriptive information about the data file.</r:Content>
+		</r:Description>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileName" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Contains a short title that will be used to distinguish a particular file/part from other files/parts in the data collection.</r:Content>
+		</r:Description>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCitation" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>				
+			<r:Content>Usage: The complex element fileCitation provides for a full bibliographic citation option for each data file described in fileDscr. To support accurate citation of a data file the minimum element set includes: titl, IDNo, authEnty, producer, and prodDate.</r:Content>
+		</r:Description>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCitation/titlStmt" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Title statement for the work.</r:Content>
+		</r:Description>
+	</pr:Used>
+	
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCitation/titlStmt/titl" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>				
+			<r:Content>Usage: Full authoritative title for the work (…) A full title should indicate the geographic scope of the data collection as well as the time period covered.</r:Content>
+		</r:Description>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCitation/titlStmt/titl/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if ‚titl‘ element is present </r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>					
+			<r:Content>Usage: Attribute to specify the language of the dataset label. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>
+	</pr:Used>
+	
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCitation/titlStmt/partitl/" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>				
+			<r:Content>Usage: Full authoritative title for the work (…) A full title should indicate the geographic scope of the data collection as well as the time period covered.</r:Content>
+		</r:Description>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCitation/titlStmt/partitl/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if ‚titl‘ element is present </r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>					
+			<r:Content>Usage: Attribute to specify the language of the dataset label. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCont" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>				
+			<r:Content>Usage: Abstract or description of the file. A summary describing the purpose, nature, and scope of the data file, special characteristics of its contents, major subject areas covered, and what questions the PIs attempted to answer when they created the file.</r:Content>
+		</r:Description>
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/fileCont/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'fileCont' element is present</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>				
+			<r:Content>Usage: Attribute to specify the language of the dataset description. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>		
+	</pr:Used>
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/notes" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>					
+			<r:Content>Usage: For clarifying information/annotation regarding the dataset.</r:Content>
+		</r:Description>
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/notes/ExtLink" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>					
+			<r:Content>Usage: This element permits encoders to provide links from any arbitrary element containing ExtLink as a subelement to electronic resources outside the codebook.</r:Content>
+		</r:Description>
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/fileDscr/fileTxt/notes/ExtLink/@URI" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'ExtLink' element is present.</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>					
+			<r:Content>Usage: Attribute to provide an URL for more detailed information on the dataset.</r:Content>
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>
+	</pr:Used>	
+
+	<!--****************************************************************************************-->
+	<!--DATA DESCRIPTIONS-->
+	<!--****************************************************************************************-->	
+
+	<pr:Used xpath="/codeBook/dataDscr" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content> 						
+			<r:Content>Usage: Description of variables.</r:Content>			
+		</r:Description>
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/dataDscr/var" isRequired="true">
+		<r:Description>
+			<r:Content>Required: Mandatory</r:Content>
+			<r:Content>ElementType: Content element</r:Content>								
+			<r:Content>Usage: This element describes all of the features of a single variable in a 
+			social science data file. 
+			</r:Content>			
+		</r:Description>
+	</pr:Used>		
+
+	<pr:Used xpath="/codeBook/dataDscr/var/@name" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if ‚var‘ element is present </r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>			
+			<r:Content>Usage: The attribute "name" usually contains the so-called "short label" for 
+			the variable, limited to eight characters in many statistical analysis systems such as SAS or SPSS. 
+			</r:Content>
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/dataDscr/var/labl" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional.</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: A short description of the parent element. In the variable label, the length of this 
+			phrase may depend on the statistical analysis system used (e.g., some versions of SAS permit 40-character 
+			labels, while some versions of SPSS permit 120 characters), although the DDI itself imposes no restrictions 
+			on the number of characters allowed.</r:Content> 			
+		</r:Description>				
+	</pr:Used>		
+
+	<pr:Used xpath="/codeBook/dataDscr/var/labl/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'labl' element is present.</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>
+			<r:Content>Usage: Attribute to specify the language of the variable label. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>			
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/dataDscr/var/txt" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>			
+			<r:Content>Usage: Lengthier description of the parent variable.</r:Content>			
+		</r:Description>
+	</pr:Used>		
+
+	<pr:Used xpath="/codeBook/dataDscr/var/txt/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'txt' element is present.</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>
+			<r:Content>Usage: Attribute to specify the language of the variable description>. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>			
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>	
+	</pr:Used>		
+
+	<pr:Used xpath="/codeBook/dataDscr/var/catgry" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>
+			<r:Content>Usage: A description of a particular response.</r:Content>			
+		</r:Description>
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/dataDscr/var/catgry/catValu" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'catgry' element is present.</r:Content>
+			<r:Content>ElementType: Content element</r:Content>									
+			<r:Content>Usage: The explicit response.</r:Content>			
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>			
+	</pr:Used>		
+
+	<pr:Used xpath="/codeBook/dataDscr/var/catgry/labl" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional.</r:Content>
+			<r:Content>ElementType: Content element</r:Content>								
+			<r:Content>Usage: A short description of the value.</r:Content>			
+		</r:Description>	
+	</pr:Used>		
+
+	<pr:Used xpath="/codeBook/dataDscr/var/catgry/labl/@xml:lang" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'labl' element is present.</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>
+			<r:Content>Usage: Attribute to specify the language of the value label. Use ISO-639-1-Code for language subtags, e.g. en for English.</r:Content>			
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>			
+	</pr:Used>
+	
+	<pr:Used xpath="/codeBook/dataDscr/var/varFormat" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional</r:Content>
+			<r:Content>ElementType: Content element</r:Content>									
+			<r:Content>Usage: The technical format of the variable in question.</r:Content>			
+		</r:Description>
+	</pr:Used>		
+
+	<pr:Used xpath="/codeBook/dataDscr/var/varFormat/@type" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if 'varFormat' element is present</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>
+			<r:Content>Usage: Attributes for this element include: "type," which indicates if the variable is character or numeric;</r:Content>
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>			
+	</pr:Used>
+	
+	<pr:Used xpath="/codeBook/dataDscr/var/notes" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional.</r:Content>
+			<r:Content>ElementType: Content element</r:Content>								
+			<r:Content>Usage: For clarifying information/annotation regarding the variable.</r:Content>			
+		</r:Description>
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/dataDscr/var/notes/ExtLink" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Optional.</r:Content>
+			<r:Content>ElementType: Content element</r:Content>							
+			<r:Content>Usage: This element permits encoders to provide links from any arbitrary element containing ExtLink as a subelement to electronic resources outside the codebook.</r:Content>
+		</r:Description>
+	</pr:Used>	
+
+	<pr:Used xpath="/codeBook/dataDscr/var/notes/ExtLink/@URI" isRequired="false">
+		<r:Description>
+			<r:Content>Required: Mandatory if ‘ExtLink’ element is present.</r:Content>
+			<r:Content>ElementType: Attribute element</r:Content>
+			<r:Content>Usage: Attribute to provide an URL for more detailed information on the variable.</r:Content>			
+		</r:Description>
+		<pr:Instructions>
+			<r:Content>
+				<![CDATA[<Constraints><MandatoryNodeIfParentPresentConstraint/></Constraints>]]>
+			</r:Content>
+		</pr:Instructions>			
+	</pr:Used>	
+
+	
+	
+</pr:DDIProfile>
