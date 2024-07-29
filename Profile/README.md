@@ -111,7 +111,7 @@ Code 1: Respective XML Code for the example presented in Table 1.
 
 ## Optional Constraint
 
-The metadata specification of the External\_OpenDF allows providing a
+The metadata specification of the Open Data Format allows providing a
 lengthier description of a variable that goes beyond the variable label.
 Since an extended variable description may not always be necessary, the
 profile declares the Xpath `//codeBook/dataDscr/var/txt` optional.
@@ -120,7 +120,7 @@ profile declares the Xpath `//codeBook/dataDscr/var/txt` optional.
 |:----|:---------------------|:---------------------------------------|:----------------------------|:--------------------|
 | 23  | variable description | Lengthier description of the variable. | //codeBook/dataDscr/var/txt | optional            |
 
-Table 2: Example for an optional constraint within the External\_OpenDF
+Table 2: Example for an optional constraint within the ODF
 Profile.
 
 ``` xml
@@ -139,19 +139,19 @@ Code 2: Respective XML Code for the example presented in Table 2.
 
 ## Mandatory if parent element is present Constraint
 
-The metadata specification of the External Open Data Format supports
+The metadata specification of the Open Data Format supports
 multi-lingual labels and descriptions for several dataset elements like
 variables or values, which makes it necessary to declare the language of
 the text element using the attribute `@xml:lang`. For example, if a
 variable description exists (even if it is optional), the declaration of
 the language is mandatory.
 
-|     | element.label | element.description                                                                                                                    | external\_xml                            | xml file                        |
+|     | element.label | element.description                                                                                                                    | xml file                            | xml file                        |
 |:----|:--------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------|:--------------------------------------|
 | 24  | language tag  | Attribute to specify the language of the <variable description>. &lt;Use ISO-639-1-Code for language subtags, e.g. en for English.&gt; | //codeBook/dataDscr/var/txt\[@xml:lang\] | mandatory if ‘txt’ element is present |
 
 Table 3: Example for an “mandotory if parent element is present”
-constraint within the External\_OpenDF Profile.
+constraint within the ODF Profile.
 
 ``` xml
     <pr:Used xpath="/codeBook/dataDscr/var/txt/@xml:lang" isRequired="false">
