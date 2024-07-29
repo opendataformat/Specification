@@ -87,7 +87,7 @@ without variables is not a dataset by definition, it makes sense that
 the `var` node is a mandatory element of the Open Data Format
 metadata specification.
 
-|     | element.label | element.description                                                                            | external\_xml           | xml\_classification |
+|     | element.label | element.description                                                                            | xml file                | xml\_classification |
 |:----|:--------------|:-----------------------------------------------------------------------------------------------|:------------------------|:--------------------|
 | 19  | variable      | This element describes all of the features of a single variable in a social science data file. | //codeBook/dataDscr/var | mandatory           |
 
