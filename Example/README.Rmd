@@ -14,11 +14,6 @@ This data example is intended to illustrate the main features of the specified O
 Since the Open Data Format specifies both, the data component and the metadata component of a dataset, the document is structured in two main sections: [Data](#data) and [Metadata](#metadata).
 
 ## Data
-```{r, include=FALSE}
-knitr::opts_knit$set(root.dir = "C:/Users/thartl/OneDrive - DIW Berlin/Open Data Format Project/R/Testdaten/data")
-
-```
-
 The survey response data is saved in the [data.csv](data.csv) file. The dataset contains the seven variables **bap87**, **bap9201**, **bap9001**, **bap9002**, **bap9003**, **bap96** and **name**.
 
 ```{r, echo=FALSE, include=TRUE}
