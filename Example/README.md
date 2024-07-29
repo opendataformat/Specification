@@ -1,4 +1,4 @@
-External\_OpenDF: Example
+Open Data Format: Example
 ================
 
 -   [Example](#example)
@@ -15,7 +15,7 @@ External\_OpenDF: Example
 # Example
 
 This data example is intended to illustrate the main features of the
-specified External Open Data Format (External\_OpenDF). The example was
+specified Open Data Format (ODF). The example was
 developed along the lines of the [SOEP-Core study from
 2010](https://paneldata.org/soep-core/data/bap/), in which, among other
 instruments, data were collected using the [Individual
@@ -27,7 +27,7 @@ have an example for character variables. The responses for the variable
 `name` stem from the dataset “Vornamen 2013” from the Open Data platform
 [Offene Daten Köln](https://offenedaten-koeln.de/dataset/vornamen).
 
-Since the External\_OpenDF specifies both, the data component and the
+Since the ODF specifies both, the data component and the
 metadata component of a dataset, the document is structured in two main
 sections: [Data](#data) and [Metadata](#metadata).
 
@@ -75,13 +75,13 @@ labels are held by the metadata component of the dataset.
 ## Metadata
 
 For describing the raw data stored in the [data.csv](data.csv) file the
-External\_OpenDF provides a metadata XML file
+Open Data Format provides a metadata XML file
 ([metadata.xml](metadata.xml)). The XML file integrates different levels
 of metadata information using hierarchically nested tags. The
 `<codebook>` tag includes general information about the metadata schema
-– for the External\_OpenDF the [DDI-Codebook 2.5
+– for the ODF the [DDI-Codebook 2.5
 schema](https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/field_level_documentation.html)
-is the basis. For a general description of the dataset, the `<fileDscr>`
+is the basis. For a general description of the dataset, the `<stdyDscr>` and `<fileDscr>`
 tag is available. Finally, the `<dataDscr>` tag holds information about
 the datasets’ variables, their missing values, and predefined values and
 value labels in the case of categorical variables.
@@ -102,6 +102,19 @@ The `<codebook>` tag holds general information about the DDI-Codebook
 ```
 
 Code 1: XML code for declaring the metadata schema
+
+### Study
+The `<stdyDscr>`tag includes information about the study where the data was collected.
+
+```{xml}
+<stdyDscr>
+  <citation>
+    <titlStmt>
+      <titl>soep-core v38.1</titl>
+    </titlStmt>
+  </citation>
+</stdyDscr>
+```
 
 ### Dataset
 
@@ -148,7 +161,7 @@ dataset is available.
 ### Variables
 
 Code 3 gives an example for describing the variable `bap87` using the
-External\_OpenDF specification. All variable metadata is included within
+ODF specification. All variable metadata is included within
 the `<dataDscr>` tag, with the metadata for each individual variable
 contained in a `<var`&gt; tag. The `var` tag allows various sub-tags for
 describung a variable. For the variable `bap87` from the example, the
