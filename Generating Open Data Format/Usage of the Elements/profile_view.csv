@@ -1,0 +1,23 @@
+element label,element description,internal_csv,csv_classification
+dataset,Information about the data file(s) that comprises a collection.,dataset,mandatory
+dataset name,Contains a short title that will be used to distinguish a particular file/part from other files/parts in the data collection.,"dataset[,dataset]",mandatory
+dataset label,Full authoritative title for the work (…) A full title should indicate the geographic scope of the data collection as well as the time period covered.,"dataset[,label_*lang*]",optional
+language tag,"Attribute to specify the language of the <dataset label>. <Use ISO-639-1-Code for language subtags, e.g. en for English.>",*lang*,mandatory if ‚label‘ element is present
+dataset description,"Abstract or description of the file. A summary describing the purpose, nature, and scope of the data file, special characteristics of its contents, major subject areas covered, and what questions the PIs attempted to answer when they created the file.","dataset[,description_*lang*]",optional
+language tag,"Attribute to specify the language of the <dataset description>. <Use ISO-639-1-Code for language subtags, e.g. en for English.>",*lang*,mandatory if ‚description‘ element is present
+dataset url,Attribute to provide an URL for more detailed information on the dataset.,"dataset[,url]",optional
+variables,Description of variables.,"variables[,]",mandatory
+variable,This element describes all of the features of a single variable in a social science data file. ,"variables[1:n,]",mandatory
+variable name,"The attribute ""name"" usually contains the so-called ""short label"" for the variable, limited to eight characters in many statistical analysis systems such as SAS or SPSS. ","variables[,variable]",mandatory
+variable label,"A short description of the variable. In the variable label, the length of this phrase may depend on the statistical analysis system used (e.g., some versions of SAS permit 40-character labels, while some versions of SPSS permit 120 characters), although the DDI itself imposes no restrictions on the number of characters allowed.","variables[,label_*lang*]",optional
+language tag,"Attribute to specify the language of the <variable label>. <Use ISO-639-1-Code for language subtags, e.g. en for English.>",*lang*,mandatory if ‚label‘ element is present
+variable description,Lengthier description of the variable. ,"variables[,description_*lang*]",optional
+language tag,"Attribute to specify the language of the <variable description>. <Use ISO-639-1-Code for language subtags, e.g. en for English.>",*lang*,mandatory if ‚description‘ element is present
+variable url,Attribute to provide an URL for more detailed information on the variable.,"variables[,url]",optional
+variable type,"Attributes for this element include: ""type,"" which indicates if the variable is character or numeric;","variables[,type]",optional
+categories,<Description of categorial variables.>,"categories[,]",optional
+category,A description of a particular response.,"categories[1:n,]",optional
+key,<Foreign key for referencing the ‚category‘ element with the variables element.>,"categories[,variable]",mandatory if categories file is present
+category values,The explicit response.,"categories[,value]",mandatory if categories file is present
+category labels,A short description of the <category values>.,"categories[,label_*lang*]",optional
+language tag,"Attribute to specify the language of the <category labels>. <Use ISO-639-1-Code for language subtags, e.g. en for English.>",*lang*,mandatory if ‚label‘ element is present
