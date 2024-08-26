@@ -128,4 +128,4 @@ with the metadata profile specified for the ODF. To test
 the validator tool from CESSDA you can download the metadata file from
 this repository [metadata.xml](Example/metadata.xml)) and
 validate against the ODF profil
-([profile.xml](Profile/profile.xml)).
+([profile.xml](Profile/profile.xml)). For further information on the metadata profile, see [Profil](https://opendataformat.github.io/Specification/Profile/).
