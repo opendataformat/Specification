@@ -1,7 +1,7 @@
 #Convert csv to  ODF and load ODF dataset
 
 #Install the opendataformat and the opendataformat.tools packages
-install.packages(opendataformat)
+install.packages("opendataformat")
 devtools::install_git("https://git.soep.de/opendata/r-package-opendataformat.tools.git")
 
 # Load the packages
@@ -10,7 +10,7 @@ library(opendataformat.tools)
 
 
 #Define the path where the four csv-Files are
-csv_folder_path<-"C:/.../..."
+csv_folder_path<-"C:/.../"
 
 #Define the path where to store the ODF zip-File
 opendf_output_path<-"C:/.../"
@@ -23,11 +23,11 @@ convert_opendf(format="csv2xml", input=csv_folder_path, output=paste0(opendf_out
 
 
 # Test if the dataset was converted properly
-df<-read_opendf(file=paste0(opendf_output_path, datasetname, ".zip"))
+df<-read_odf(file=paste0(opendf_output_path, datasetname, ".zip"))
 
 #you can use the docu_opendf() function to see if metadata is correctly assigned
 #for the dataset:
-docu_opendf(df)
+docu_odf(df)
 
 #for a variable
-docu_opendf(df$variablename)
+docu_odf(df$variablename)
