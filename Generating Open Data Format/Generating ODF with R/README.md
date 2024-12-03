@@ -35,11 +35,11 @@ Once the four CSV files are provided the ODF can be generated using the
 
 ## Generating ODF from enriched dataframe
 
-A second approach is to enrich a data.frame in R with metadata according to  
+A second approach is to enrich a tibble data.frame in R with metadata according to  
 the ODF specification and in line with the internal specification of the opendf 
 package for storing metadata.
 
-Therefore, metadata has to be assigned to the attributes of the dataframe and 
+Therefore, metadata has to be assigned to the attributes of the tibble and 
 the variables.
 The dataset metadata is stored in the attributes of the dataset.
 The dataset has the attributes `languages` with a vector of metadata languaguages 
