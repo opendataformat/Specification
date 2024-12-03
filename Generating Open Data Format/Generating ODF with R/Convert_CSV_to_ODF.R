@@ -1,7 +1,7 @@
 #Convert csv to  ODF and load ODF dataset
 
 #Install the opendataformat and the opendataformat.tools packages
-devtools::install_git("https://git.soep.de/opendata/r-package-opendataformat.git")
+install.packages(opendataformat)
 devtools::install_git("https://git.soep.de/opendata/r-package-opendataformat.tools.git")
 
 # Load the packages
