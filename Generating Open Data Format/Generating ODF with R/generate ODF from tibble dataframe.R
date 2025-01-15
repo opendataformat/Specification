@@ -167,5 +167,7 @@ for (var in names(metadata)) {
   }
 }
 
+# convert to ODF tibble
+df <- as_odf_tbl(df)
 
 write_odf(df, "odf_dataset.zip")
