@@ -13,7 +13,7 @@ import json
 # Pfad zu Ordner mit 4 csvs
 input_dir='C:/...path to folders containing 4 csv-files.../csv'
 # Pfad und Dateiname für ODF-Outputfile, Dateiname ohne '.zip' angeben
-output_dir='C:/Users/thartl/Documents/soep datasets/datasetname'
+output_dir='C:/Users/...'
 
 #########Parameter:########
 
