@@ -78,7 +78,7 @@ DDI-Codebook 2.5 schema, the ODF is to be extendable with
 further existing metadata schemas.
 
 ![Figure 2: Files of a dataset specified in the Open Data
-Format](img/img01.png)
+Format](img/odf_components.png)
 
 ## Profile
 
