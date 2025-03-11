@@ -11,9 +11,9 @@ import json
 
 #########Inputs:###########
 # Pfad zu Ordner mit 4 csvs
-input_dir='C:/...path to folders containing 4 csv-files.../csv'
-# Pfad und Dateiname für ODF-Outputfile, Dateiname ohne '.zip' angeben
-output_dir='C:/Users/...'
+input_dir='C:/Users/thartl/AppData/Local/Temp'
+# Pfad und Dateiname für ODF-Outputfile, Dateiname mit '.zip' angeben
+output_dir='C:/Users/thartl/Documents/datasetname.odf.zip'
 
 #########Parameter:########
 
@@ -26,6 +26,14 @@ odf_version="1.1.0"
 
 
 ############# Functions for conversion to ODF #############
+# Modules
+import csv
+import os
+import shutil
+import zipfile
+import xml.etree.ElementTree as ET
+import json
+
 # formatting xml output
 def pretty_print(current, parent=None, index=-1, depth=0):
   for i, node in enumerate(current):
@@ -139,73 +147,72 @@ def csv2xml(input_dir, output_dir, odf_version):
         extlink=ET.SubElement(notes,'ExtLink')
         extlink.attrib['URI']=row['url']
   
-  if variables_arg == "yes" :
-    
-    if os.path.exists(input_dir+"/categories.csv") == True :
-        list_categories=[]
-        categories=open(input_dir+"/categories.csv", mode="r", encoding="utf-8")
-        dict_categories = csv.DictReader(categories)
-        for i in dict_categories:
-          list_categories.append(i)
-    
-        if os.path.exists(input_dir+"/variables.csv") == True :
-          # variables
-          dataDscr=ET.SubElement(root,'dataDscr')
-          with open(input_dir+"/variables.csv", mode="r", encoding="utf-8") as file:
-            dict_reader=csv.DictReader(file)
-            for row in dict_reader:
-              var = ET.SubElement(dataDscr, 'var')
-              var.attrib['name'] = row['variable']
-              # get keys
-              list_keys = row.keys()
-              # variable label
-              if 'label' in list_keys:
-                labl = ET.SubElement(var, 'labl')
-                labl.text = row['label']
-              if any(item.startswith('label_') for item in list_keys):
-                for lang in get_lang(input_dir,"variables.csv","label"):
-                  labl = ET.SubElement(var, 'labl')
-                  labl.attrib['{http://www.w3.org/XML/1998/namespace}lang'] = lang
-                  labl.text = row['label_'+lang]
-              # variable description    
-              if 'description' in list_keys:
-                txt = ET.SubElement(var, 'txt')
-                txt.text = row['description']        
-              if any(item.startswith('description_') for item in list_keys):  
-                for lang in get_lang(input_dir,"variables.csv","description"):
-                  txt = ET.SubElement(var, 'txt')
-                  txt.attrib['{http://www.w3.org/XML/1998/namespace}lang'] = lang
-                  txt.text = row['description_'+lang]
-              #variable categories        
-              varname = row['variable']
-              for line in list_categories:
-                # get keys
-                list_keys2 = line.keys()
-                if line['variable'] == varname:
-                  catgry = ET.SubElement(var, 'catgry')
-                  # value
-                  catValu = ET.SubElement(catgry, 'catValu')
-                  catValu.text = line['value']
-                  # value label
-                  if 'label' in list_keys2:
+
+  if os.path.exists(input_dir+"/categories.csv") == True :
+    list_categories=[]
+    categories=open(input_dir+"/categories.csv", mode="r", encoding="utf-8")
+    dict_categories = csv.DictReader(categories)
+    for i in dict_categories:
+      list_categories.append(i)
+  
+    if os.path.exists(input_dir+"/variables.csv") == True :
+      # variables
+      dataDscr=ET.SubElement(root,'dataDscr')
+      with open(input_dir+"/variables.csv", mode="r", encoding="utf-8") as file:
+        dict_reader=csv.DictReader(file)
+        for row in dict_reader:
+          var = ET.SubElement(dataDscr, 'var')
+          var.attrib['name'] = row['variable']
+          # get keys
+          list_keys = row.keys()
+          # variable label
+          if 'label' in list_keys:
+            labl = ET.SubElement(var, 'labl')
+            labl.text = row['label']
+          if any(item.startswith('label_') for item in list_keys):
+            for lang in get_lang(input_dir,"variables.csv","label"):
+              labl = ET.SubElement(var, 'labl')
+              labl.attrib['{http://www.w3.org/XML/1998/namespace}lang'] = lang
+              labl.text = row['label_'+lang]
+          # variable description    
+          if 'description' in list_keys:
+            txt = ET.SubElement(var, 'txt')
+            txt.text = row['description']        
+          if any(item.startswith('description_') for item in list_keys):  
+            for lang in get_lang(input_dir,"variables.csv","description"):
+              txt = ET.SubElement(var, 'txt')
+              txt.attrib['{http://www.w3.org/XML/1998/namespace}lang'] = lang
+              txt.text = row['description_'+lang]
+          #variable categories        
+          varname = row['variable']
+          for line in list_categories:
+            # get keys
+            list_keys2 = line.keys()
+            if line['variable'] == varname:
+              catgry = ET.SubElement(var, 'catgry')
+              # value
+              catValu = ET.SubElement(catgry, 'catValu')
+              catValu.text = line['value']
+              # value label
+              if 'label' in list_keys2:
                     labl = ET.SubElement(catgry, 'labl')
                     labl.text = line['label']
-                  if any(item.startswith('label_') for item in list_keys2):  
+              if any(item.startswith('label_') for item in list_keys2):  
                     for lang in get_lang(input_dir,"categories.csv","label"):
                       labl = ET.SubElement(catgry, 'labl')
                       labl.attrib['{http://www.w3.org/XML/1998/namespace}lang'] = lang
                       labl.text = line['label_'+lang]   
-              # Variable type
-              if 'type' in list_keys:
-                if not row['type'] == '':
+          # Variable type
+          if 'type' in list_keys:
+            if not row['type'] == '':
                   varFormat = ET.SubElement(var, 'varFormat')
                   varFormat.attrib['type'] = row['type']                
-              # Variable URL
-              if 'url' in list_keys:    
+          # Variable URL
+          if 'url' in list_keys:    
                 notes = ET.SubElement(var, 'notes')
                 ExtLink = ET.SubElement(notes, 'ExtLink')
                 ExtLink.attrib['URI'] = row['url']
-              
+            
   # write xml
   pretty_print(root)
   tree = ET.ElementTree(root)
