@@ -7,9 +7,12 @@ library(tibble)
 library(dplyr)
 library(opendataformat)
 
+
+setwd("C:/Users/.../")
+
+
 # Load the dataset (replace "path_to_data.csv" with your file path)
-#data <- read.csv("path_to_data.csv", stringsAsFactors = FALSE, encoding = "UTF-8")
-data <- read.csv("C:/Users/thartl/OneDrive - DIW Berlin/Open Data Format Project/R/SOEP opendf generations/Testdaten/csv/data.csv", stringsAsFactors = FALSE, encoding = "UTF-8")
+data <- read.csv("path_to_data.csv", stringsAsFactors = FALSE, encoding = "UTF-8")
 
 # Convert the dataset to a tibble
 df <- as_tibble(data)
