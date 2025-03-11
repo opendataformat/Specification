@@ -213,4 +213,4 @@ char name[value_labels_de] "trifft nicht zu<;>keine Angabe"
 save "example.dta", replace
 
 * Save dataset as ODF file
-opendf write "example.zip"
+opendf write "example.odf.zip"
