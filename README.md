@@ -12,8 +12,8 @@ Open Data Format (ODF)
 Author: Xiaoyao Han, Tom Hartl, Claudia Saalbach, Knut Wenzig  
 Affiliation: DIW Berlin  
 Created: 2022-03-01  
-Version: v1.0.0  
-Last modified: 2024-07-30  
+Version: v1.1.0  
+Last modified: 2025-03-11  
 Licence: This repository is issued under a CC by licence
 (<https://creativecommons.org/licenses/by/4.0/>)
 
@@ -66,11 +66,11 @@ import the data format into several statistical software.
 
 The ODF consists of data and metadata organized in two
 separate files (see Figure 2). The data is stored in CSV format and the
-metadata is in XML. For data exchange, both files are packed into a ZIP
-file. The ZIP file corresponds to the dataset to be used for various
-statistics programs through import filters. Vice Versa, statistical
-software is to be capable of exporting the native format to the
-ODF.
+metadata is in XML. For data exchange, both files are packed together with 
+a version file (.json) into a ZIP file. The ZIP file corresponds to
+the dataset to be used for various statistics programs through import
+filters. Vice Versa, statistical software is to be capable of exporting 
+the native format to the ODF.
 
 The DDI-Codebook 2.5 metadata schema is the basis for the specification
 of the metadata component in the ODF. Besides the
