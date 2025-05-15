@@ -14,18 +14,20 @@
 	
 		
 	You need the opendf package version v2.0.0 or higher for this script.
-	At this point you can install the development version from github:
-	. net install opendf, from (https://thartl-diw.github.io/opendf/) replace
+	At this point you can install the package from ssc:
+	. ssc install opendf
 	
 	Author: Tom Hartl
-	Date: 12 August 2024
+	Date: 03 DEcember 2024
 
 -----------------------------------------------------------------------------------*/
 
+ssc install opendf
+
 * You need to indicate the location of the four csv-files:
 local input_folder "..."
-* and the location and name for the ODF zip-file output 
-local output_zip "...\odf_datafile_name.zip"
+* and the location and name for the ODF (.odf.zip)-file output
+local output_zip "...\odf_datafile_name.odf.zip"
 
 *convert the four CSVs to ODF
 opendf csv2zip, output("`output_zip'") input("`input_folder'")

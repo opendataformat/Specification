@@ -8,7 +8,7 @@
 		
 	You need the opendf package version v2.0.0 or higher for this script.
 	At this point you can install the development version from github:
-	. net install opendf, from (https://thartl-diw.github.io/opendf/) replace
+	. ssc install opendf
 	
 	Author: Tom Hartl
 	Date: 12 August 2024
@@ -17,6 +17,7 @@
 version 16
 clear all
 
+ssc install opendf
 
 ******** Import raw Data *******
 
@@ -39,7 +40,7 @@ label language de
 label data "Daten vom Personenfragebogen 2010"
 
 * Define study name
-char _dta[study] https://paneldata.org/soep-core/data/bap
+char _dta[study] soep-core v.X
 
 * Define dataset name
 char _dta[datset] bap
@@ -212,4 +213,4 @@ char name[value_labels_de] "trifft nicht zu<;>keine Angabe"
 save "example.dta", replace
 
 * Save dataset as ODF file
-opendf write "example.zip"
+opendf write "example.odf.zip"

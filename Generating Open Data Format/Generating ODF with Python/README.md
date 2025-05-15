@@ -6,7 +6,7 @@ Generating Open Data Format with Python
 Author: Xiaoyao Han, Tom Hartl, Claudia Saalbach, Knut Wenzig  
 Affiliation: DIW Berlin  
 Created: 2024-08-12  
-Version: v1.0.0  
+Version: v2.1.0  
 Last modified: 2024-08-12
 Licence: This repository is issued under a CC by licence
 (<https://creativecommons.org/licenses/by/4.0/>)
